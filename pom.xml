@@ -13,6 +13,8 @@
 	</properties>
 	<modules>
 		<module>trusting-antelope-war</module>
+		<module>trusting-antelope-job</module>
+		<module>trusting-antelope-ear</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
