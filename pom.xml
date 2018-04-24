@@ -15,6 +15,7 @@
 		<module>trusting-antelope-war</module>
 		<module>trusting-antelope-job</module>
 		<module>trusting-antelope-ear</module>
+		<module>trusting-antelope-job-entities</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -24,6 +25,13 @@
 				<version>8.0</version>
 				<scope>provided</scope>
 			</dependency>
+			<dependency>
+				<groupId>com.ibm.jbatch</groupId>
+				<artifactId>com.ibm.jbatch.container</artifactId>
+				<version>1.0.2</version>
+				<scope>provided</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 </project>

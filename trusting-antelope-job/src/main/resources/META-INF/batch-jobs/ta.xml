@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="ta" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	version="1.0">
+	<listeners>
+		<listener ref="TAJobListener" />
+	</listeners>
+	<properties>
+		<property name="max" value="#{jobParameters['max']}" />
+	</properties>
+	<step id="batchlet" next="chunk">
+		<listeners>
+			<listener ref="TAStepListener" />
+		</listeners>
+		<batchlet ref="TABatchlet">
+			<properties>
+				<property name="batchlet_key" value="batchlet_value" />
+			</properties>
+		</batchlet>
+		<end on="FINISHED" />
+	</step>
+	<step id="chunk">
+		<listeners>
+			<listener ref="TAStepListener" />
+			<listener ref="TAItemReadListener" />
+			<listener ref="TAItemProcessListener" />
+			<listener ref="TAItemWriteListener" />
+			<listener ref="TAChunkListener" />
+			<listener ref="TARetryReadListener" />
+			<listener ref="TARetryProcessListener" />
+			<listener ref="TARetryWriteListener" />
+			<listener ref="TASkipReadListener" />
+			<listener ref="TASkipProcessListener" />
+			<listener ref="TASkipWriteListener" />
+		</listeners>
+		<chunk checkpoint-policy="custom">
+			<reader ref="TAItemReader" />
+			<processor ref="TAItemProcessor" />
+			<writer ref="TAItemWriter" />
+			<checkpoint-algorithm ref="" />
+		</chunk>
+	</step>
+	<step id="partitionPlan">
+		<chunk>
+			<reader ref="TAItemReader" />
+			<processor ref="TAItemProcessor" />
+			<writer ref="TAItemWriter" />
+		</chunk>
+		<partition>
+			<plan partitions="2" threads="1">
+				<properties partition="0">
+					<property name="partitionId" value="first" />
+				</properties>
+				<properties partition="1">
+					<property name="partitionId" value="last" />
+				</properties>
+			</plan>
+			<reducer ref="TAPartitionReducer"></reducer>
+			<collector ref="TAPartitionCollector"></collector>
+			<analyzer ref="TAPartitionAnalyzer"></analyzer>
+		</partition>
+	</step>
+	<step id="partitionMapper">
+		<chunk>
+			<reader ref="TAItemReader" />
+			<processor ref="TAItemProcessor" />
+			<writer ref="TAItemWriter" />
+		</chunk>
+		<partition>
+			<mapper ref=""></mapper>
+			<reducer ref="TAPartitionReducer"></reducer>
+			<collector ref="TAPartitionCollector"></collector>
+			<analyzer ref="TAPartitionAnalyzer"></analyzer>
+		</partition>
+	</step>
+	<flow id="flow" next="batchlet">
+		<decision id="decision" ref="TADecider">
+			<fail on="FAILED" exit-status="FAILED_AT_DECIDER" />
+			<end on="COMPLETED" exit-status="COMPLETED_AT_DECIDER" />
+			<stop on="STOPPED" restart="batchlet" />
+		</decision>
+	</flow>
+</job>

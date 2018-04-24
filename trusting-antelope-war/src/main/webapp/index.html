@@ -3,11 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Trusting Antelope</title>
+<script type="application/javascript">
+	
+function onJobIdChange() {
+	document.getElementById('jobid_link').setAttribute('href','./getjobstatus?jobId='+document.getElementById('jobid').value);	
+}
+
+</script>
 </head>
 <body>
 	<ul>
-		<li><a href="./newjob">New Job</a></li>
-		<li><a href="./getjobstatus?jobid=0">Get Job Status</a></li>
+		<li><a href="./newjob" target="_blank">New Job</a></li>
+		<li><a id="jobid_link" href="./getjobstatus?jobId=1"
+			target="_blank">Get Job Status</a></li>
+		<li><a href="./getthepicture" target="_blank">Get The Picture</a></li>
 	</ul>
+	<div>
+		<label for="jobid">Job ID :</label> <input id="jobid" name="jobid"
+			onInput="onJobIdChange()" />
+	</div>
 </body>
 </html>

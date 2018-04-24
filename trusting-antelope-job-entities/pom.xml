@@ -7,27 +7,11 @@
 		<artifactId>trusting-antelope-pom</artifactId>
 		<version>0.0.0</version>
 	</parent>
-	<artifactId>trusting-antelope-war</artifactId>
-	<packaging>war</packaging>
+	<artifactId>trusting-antelope-job-entities</artifactId>
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.github.xavierdpt.trusting.antelope</groupId>
-			<artifactId>trusting-antelope-job</artifactId>
-			<version>0.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.9.5</version>
-		</dependency>
-		<dependency>
-			<groupId>com.ibm.jbatch</groupId>
-			<artifactId>com.ibm.jbatch.container</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

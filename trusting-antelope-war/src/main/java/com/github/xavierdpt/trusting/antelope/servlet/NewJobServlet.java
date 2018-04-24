@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
 
+import javax.batch.operations.JobOperator;
 import javax.batch.runtime.BatchRuntime;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +23,13 @@ public class NewJobServlet extends HttpServlet {
 		PrintWriter writer = resp.getWriter();
 
 		Properties props = new Properties();
-		long jobId = BatchRuntime.getJobOperator().start("simplejob", props);
+		props.setProperty("max", "5");
+		JobOperator jobOperator = BatchRuntime.getJobOperator();
+		long jobId = jobOperator.start("ta", props);
 		writer.println(jobId);
 
+		
 	}
+	
+	
 }
