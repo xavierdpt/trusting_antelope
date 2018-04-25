@@ -2,3 +2,8 @@
 /target/
 /.classpath
 /.project
+/trusting-antelope-common-utils/
+/trusting-antelope-ear/
+/trusting-antelope-job/
+/trusting-antelope-job-entities/
+/trusting-antelope-war/

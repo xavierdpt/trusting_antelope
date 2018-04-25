@@ -3,24 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <title>Trusting Antelope</title>
-<script type="application/javascript">
-	
-function onJobIdChange() {
-	document.getElementById('jobid_link').setAttribute('href','./getjobstatus?jobId='+document.getElementById('jobid').value);	
-}
-
-</script>
 </head>
 <body>
-	<ul>
-		<li><a href="./newjob" target="_blank">New Job</a></li>
-		<li><a id="jobid_link" href="./getjobstatus?jobId=1"
-			target="_blank">Get Job Status</a></li>
-		<li><a href="./getthepicture" target="_blank">Get The Picture</a></li>
-	</ul>
-	<div>
-		<label for="jobid">Job ID :</label> <input id="jobid" name="jobid"
-			onInput="onJobIdChange()" />
-	</div>
+	<form action="./newjob" method="post">
+		<fieldset>
+			<legend>New job</legend>
+			<div>
+				<label for="flavor">Flavor :</label> <select id="flavor"
+					name="flavor">
+					<option value="A" selected="selected">A</option>
+					<option value="B">B</option>
+					<option value="E">E</option>
+					<option value="F">F</option>
+					<option value="S">S</option>
+				</select>
+			</div>
+			<div>
+				<label for="sleep">Sleep time :</label> <input id="sleep"
+					name="sleep" value="60" />
+			</div>
+			<div>
+				<label for="result">Sleep time :</label><select id="result"
+					name="result">
+					<option value="RESULT" selected="selected">RESULT</option>
+					<option value="ENDME">ENDME</option>
+					<option value="FAILME">FAILME</option>
+					<option value="STOPME">STOPME</option>
+				</select>
+			</div>
+			<div>
+				<input type="submit" value="Submit" />
+			</div>
+		</fieldset>
+	</form>
+	<form action="./status" method="post">
+		<fieldset>
+			<legend>Status</legend>
+			<div>
+				<label for="jobid">Job ID :</label> <input id="jobid" name="jobid" />
+			</div>
+			<div>
+				<input type="submit" value="Submit" />
+			</div>
+		</fieldset>
+	</form>
 </body>
 </html>

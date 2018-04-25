@@ -16,6 +16,7 @@
 		<module>trusting-antelope-job</module>
 		<module>trusting-antelope-ear</module>
 		<module>trusting-antelope-job-entities</module>
+		<module>trusting-antelope-common-utils</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -31,7 +32,11 @@
 				<version>1.0.2</version>
 				<scope>provided</scope>
 			</dependency>
-
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.9.5</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 </project>

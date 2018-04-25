@@ -19,5 +19,10 @@
 			<artifactId>com.ibm.jbatch.container</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.github.xavierdpt.trusting.antelope</groupId>
+			<artifactId>trusting-antelope-common-utils</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>

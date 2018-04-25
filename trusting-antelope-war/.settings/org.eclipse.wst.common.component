@@ -7,6 +7,9 @@
         <dependent-module archiveName="trusting-antelope-job-0.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/trusting-antelope-job/trusting-antelope-job">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="trusting-antelope-common-utils-0.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/trusting-antelope-common-utils/trusting-antelope-common-utils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="trusting-antelope-war"/>
         <property name="java-output-path" value="/trusting-antelope-war/target/classes"/>
     </wb-module>
